@@ -1,11 +1,13 @@
 package main
 
 import (
+	jquants "Go-AutoTrade/j-quants"
 	"Go-AutoTrade/utils"
-	"log"
+	"fmt"
 )
 
 func main() {
 	utils.InitLogger()
-	log.Println("This is a test log message")
+	JQClient, err := jquants.New()
+	fmt.Println(JQClient, err)
 }

@@ -9,6 +9,8 @@ import (
 
 type GlobalConfigList struct {
 	LogOutputPath string
+	JQuantsMailAddress string
+	JQuantsPassword string
 }
 var GlobalConfig GlobalConfigList
 
@@ -21,8 +23,10 @@ func loadEnv() {
 
 func init() {
 	loadEnv()
-	
+
 	GlobalConfig = GlobalConfigList {
 		LogOutputPath: os.Getenv("LOG_OUTPUT_PATH"),
+		JQuantsMailAddress: os.Getenv("J_QUANTS_MAIL_ADDRESS"),
+		JQuantsPassword: os.Getenv("J_QUANTS_PASSWORD"),
 	}
 }
