@@ -27,3 +27,6 @@ go.work.sum
 # log file
 logs
 *.log
+
+# tokens
+tokens.json
