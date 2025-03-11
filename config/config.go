@@ -15,9 +15,8 @@ type GlobalConfigList struct {
 var GlobalConfig GlobalConfigList
 
 func loadEnv() {
-	err := godotenv.Load()
-	if err != nil {
-			log.Fatalf("Error loading .env file: %s", err)
+	if err := godotenv.Load(); err != nil {
+			log.Println("Warning: .env file not found or could not be loaded.")
 	}
 }
 
