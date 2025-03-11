@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"Go-AutoTrade/utils"
+	"log"
+)
 
 func main() {
-	fmt.Println("Hello World!")
+	utils.InitLogger()
+	log.Println("This is a test log message")
 }
