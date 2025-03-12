@@ -45,5 +45,6 @@ func New() (*JQuantsClient, error) {
 		saveTokens(t)
 	}
 
+	log.Println("J-Quants Client init done")
 	return &JQuantsClient{IDToken: t.IDToken}, nil
 }

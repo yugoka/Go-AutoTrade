@@ -2,6 +2,7 @@ package utils
 
 import (
 	"Go-AutoTrade/config"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -20,7 +21,7 @@ func InitLogger() {
 		return
 	}
 
-	// 実行ごとに異なるログファイル名を生成 (app_YYYY-MM-DD_HH-MM-SS.log)
+	// 実行ごとに異なるログファイル名を生成
 	logFileName := filepath.Join(logDir, "app_"+time.Now().Format("2006-01-02_15-04-05")+".log")
 
 	// ログファイルを開く
@@ -29,8 +30,11 @@ func InitLogger() {
 		log.Fatalf("Failed to open log file: %v", err)
 	}
 
-	// ログ出力先をファイルに設定
-	log.SetOutput(logFile)
+	// ファイルとターミナル両方に出力
+	multiWriter := io.MultiWriter(logFile, os.Stdout)
+
+	// ログ出力先をファイル+ターミナルに設定
+	log.SetOutput(multiWriter)
 	log.Println("Logger initialized: writing to", logFileName)
 
 	// 古いログを削除
