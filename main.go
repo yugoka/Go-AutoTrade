@@ -14,13 +14,9 @@ func main() {
 		log.Fatalf("Failed to init JQuantsClient: %s", err)
 	}
 
-	res, _ := jqClient.GetDailyQuotes(jquants.GetDailyQuotesParams{
-		Code: "4478",
-		From: "20220101",
-		To:   "20221230",
+	res, _ := jqClient.GetStatements(jquants.GetStatementsParams{
+		Code: "9104",
 	})
 
-	for _, data := range res {
-		fmt.Println((data.High + data.Low) / 2)
-	}
+	fmt.Println(jquants.GenerateStatementsReport(res))
 }
